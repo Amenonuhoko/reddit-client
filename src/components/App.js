@@ -56,7 +56,7 @@ const App = () => {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<div>
+				<div className='search-bar'>
 					<input
 						type="text"
 						value={input}

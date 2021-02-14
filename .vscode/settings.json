@@ -1,0 +1,13 @@
+{
+  "workbench.colorTheme": "Field Lights",
+  "workbench.iconTheme": "field-lights",
+  "prettier.useTabs": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.minimap.enabled": false,
+  "breadcrumbs.enabled": false,
+  "editor.renderWhitespace": "all",
+  "editor.renderControlCharacters": false,
+  "explorer.confirmDragAndDrop": false
+}

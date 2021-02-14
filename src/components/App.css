@@ -13,3 +13,7 @@ body {
 	background-color: #1a1a1b;
 	color: white;
 }
+.search-bar {
+	display: flex;
+	justify-content: center;
+}

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // CSS
-import "./ShowComments.css";
+import "./ShowComments.scss";
 
 const ShowComments = (props) => {
 	// State
@@ -14,9 +14,11 @@ const ShowComments = (props) => {
 	};
 
 	return (
-		<div>
-			<div className="comments-box">
-				<button onClick={handleClick}>Comments</button>
+		<div className="comments-box">
+			<div className="comments-show-button">
+				<button onClick={handleClick}>
+					<i class="far fa-comment-dots"></i>Comments
+				</button>
 			</div>
 
 			{collapse && <Comments data={props.data} />}
@@ -40,7 +42,7 @@ const Comments = (props) => {
 	}, []);
 
 	return (
-		<div>
+		<div className="comments-main-container">
 			<ul>
 				{comments.map((el, i) => {
 					return (
@@ -80,7 +82,7 @@ const CommentChildren = (props) => {
 		return (
 			<div className="comments-container">
 				<div className="hide-comments-button">
-					<i class="fas fa-plus-square" onClick={handleClick}></i>
+					<i className="fas fa-plus-square" onClick={handleClick}></i>
 				</div>
 
 				<ul>
@@ -115,7 +117,7 @@ const CommentChildren = (props) => {
 	}
 	return (
 		<div className="hide-comments-button">
-			<i class="fas fa-minus-square" onClick={handleClick}></i>
+			<i className="fas fa-minus-square" onClick={handleClick}></i>
 		</div>
 	);
 };
