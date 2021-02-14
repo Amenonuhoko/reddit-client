@@ -1,0 +1,15 @@
+input {
+	font-size: 2.5rem;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+.App-header {
+	margin: 10px 10px;
+}
+body {
+	background-color: #1a1a1b;
+	color: white;
+}

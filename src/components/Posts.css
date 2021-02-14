@@ -1,0 +1,13 @@
+.post-cards {
+	display: flex;
+	flex-direction: column;
+}
+.post-content {
+	display: flex;
+	justify-content: space-between;
+}
+.content {
+	width: 100%;
+	overflow-y: scroll;
+	height: 300px;
+}
