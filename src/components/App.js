@@ -1,7 +1,7 @@
 // Default
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./App.css";
+import "./App.scss";
 // Components
 import Posts from "./Posts";
 // CSS
@@ -56,8 +56,9 @@ const App = () => {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<div className='search-bar'>
+				<div className="search-bar">
 					<input
+						placeholder="Subreddit Here"
 						type="text"
 						value={input}
 						onChange={handleChange}
