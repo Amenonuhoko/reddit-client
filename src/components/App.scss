@@ -1,3 +1,6 @@
+* {
+	font-family: "Montserrat", sans-serif;
+}
 input {
 	font-size: 2.5rem;
 }
@@ -6,17 +9,37 @@ ul {
 	list-style-type: none;
 	padding: 0;
 }
-.App-header {
-	margin: 10px 10px;
-}
+
 body {
-	background-color: #1a1a1b;
+	background-color: #202020;
 	color: white;
 }
-.search-bar {
-	display: flex;
-	justify-content: center;
-}
-* {
-	font-family: "Montserrat", sans-serif;
+.App-header {
+	margin: 10px 10px;
+
+	.search-bar {
+		display: flex;
+		justify-content: center;
+
+		border: 2px solid #818384;
+		border-radius: 25px;
+		padding: 10px;
+		margin-bottom: 10px;
+		form {
+			background-color: #272729;
+			border: 1px solid rgb(83, 83, 83);
+			label {
+				font-size: 2rem;
+				padding-left: 10px;
+			}
+			input {
+				appearance: none;
+				outline: none;
+				background-color: #272729;
+				padding-left: 10px;
+				border: 0;
+				color: white;
+			}
+		}
+	}
 }

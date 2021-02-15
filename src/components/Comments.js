@@ -17,11 +17,19 @@ const Comments = (props) => {
 		<div className="comments">
 			<div className="comments-show-button">
 				<button onClick={handleClick}>
-					{props.data.num_comments} Comments <i class="far fa-comment-dots"></i>
+					{props.data.num_comments} Comments{" "}
+					<i className="far fa-comment-dots"></i>
 				</button>
 			</div>
 
 			{collapse && <CommentsBody data={props.data} />}
+			{collapse && (
+				<div className="comments-hide-button">
+					<button onClick={handleClick}>
+						<i class="far fa-times-circle"></i>
+					</button>
+				</div>
+			)}
 		</div>
 	);
 };
@@ -34,7 +42,7 @@ const CommentsBody = (props) => {
 	useEffect(() => {
 		axios
 			.get(
-				`https://www.reddit.com/r/${subreddit}/comments/${article}.json?limit=10`
+				`https://www.reddit.com/r/${subreddit}/comments/${article}.json?limit=50`
 			)
 			.then((response) => {
 				setComments(response.data[1].data.children);
@@ -48,7 +56,7 @@ const CommentsBody = (props) => {
 					return (
 						<li key={i}>
 							<div className="comments-parent">
-								<div className="votes">
+								<div className="comments-votes">
 									<div className="votes-up">
 										<p>{el.data.ups}</p>
 									</div>
@@ -82,7 +90,7 @@ const CommentsChildren = (props) => {
 		return (
 			<div className="comments-child-container">
 				<div className="hide-comments-button">
-					<i className="fas fa-plus-square" onClick={handleClick}></i>
+					<i className="far fa-minus-square" onClick={handleClick}></i>
 				</div>
 
 				<ul>
@@ -90,7 +98,7 @@ const CommentsChildren = (props) => {
 						return (
 							<li>
 								<div className="comments-parent">
-									<div className="votes">
+									<div className="comments-votes">
 										<div className="votes-up">
 											<p>{el.data.ups}</p>
 										</div>
@@ -117,7 +125,7 @@ const CommentsChildren = (props) => {
 	}
 	return (
 		<div className="hide-comments-button">
-			<i className="fas fa-minus-square" onClick={handleClick}></i>
+			<i className="far fa-plus-square" onClick={handleClick}></i>
 		</div>
 	);
 };

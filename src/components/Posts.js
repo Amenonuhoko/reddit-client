@@ -44,13 +44,12 @@ const Posts = (props) => {
 					</div>
 					{/* CONTENT */}
 					<div className="post-content">
-						<div className="post-content-left">
-							{el.data.url.includes(
-								`r/${el.data.subreddit}/comments`
-							) ? null : (
+						{el.data.thumbnail && (
+							<div className="post-content-left">
 								<Media data={el.data} />
-							)}
-						</div>
+							</div>
+						)}
+
 						<div className="post-content-right">
 							<div className="post-content-right-comments">
 								<Comments data={el.data} />

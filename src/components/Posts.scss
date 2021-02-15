@@ -3,16 +3,18 @@
 .post-cards {
 	display: flex;
 	flex-direction: column;
-	border-radius: 25px;
+
 	border: 2px solid #818384;
-	padding: 10px;
-	margin-bottom: 10px;
+	border-radius: 25px;
+	margin: 10px 0;
 
 	&:hover {
 		border: 2px solid rgb(165, 164, 164);
 	}
 
 	.post-header {
+		background-color: #181818b9;
+		border-radius: 25px 25px 0 0;
 		a {
 			color: #2f6d94;
 		}
@@ -20,6 +22,7 @@
 		.post-header-details {
 			display: flex;
 			justify-content: space-between;
+			padding: 0 20px;
 			.post-header-details-middle {
 				h3 {
 					border: 1px solid;
@@ -37,8 +40,8 @@
 		display: flex;
 		justify-content: space-evenly;
 		flex-wrap: wrap;
-		margin: 10px;
-		width: 100%;
+		margin: 50px 10px 10px 10px;
+
 		.post-content-left {
 			margin: 10px 10px;
 			.post-media {
@@ -50,6 +53,7 @@
 				}
 				img {
 					border-radius: 25px;
+					max-width: 600px;
 					max-height: 512px;
 				}
 				.embed-container {
@@ -59,6 +63,7 @@
 			}
 		}
 		.post-content-right {
+			min-width: 50%;
 			.post-content-right-comments {
 				display: flex;
 				flex-direction: column;
@@ -67,7 +72,7 @@
 	}
 }
 .votes {
-	padding: 10px;
+	font-size: 1.5rem;
 	.votes-up {
 		color: orange;
 	}

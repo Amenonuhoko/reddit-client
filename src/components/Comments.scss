@@ -19,27 +19,58 @@
 			}
 		}
 	}
-	.comments-container {
-		border: 2px solid grey;
-		border-radius: 10px;
-		overflow-y: scroll;
-		.comments-parent {
-			display: flex;
+	.comments-hide-button {
+		display: flex;
+		justify-content: center;
+		button {
+			font-size: 3rem;
+			background-color: transparent;
+			padding: 0;
+			border: none;
+			border-radius: 5px;
+			color: grey;
 			padding: 5px;
-			.comments-parent-body {
-				border-left: 2px solid gray;
-				padding-left: 20px;
+			outline: none;
+
+			&:hover {
+				background-color: rgba(52, 53, 54, 0.75);
 			}
 		}
 	}
 }
-
-.comments-child-container {
+.comments-container {
+	border: 2px solid rgba(128, 128, 128, 0.096);
+	border-radius: 10px;
+	overflow-y: scroll;
+	padding: 0 10px;
+	max-width: 600px;
+	max-height: 900px;
+}
+.comments-parent {
 	display: flex;
-	.hide-comments-button {
-		font-size: 2rem;
-		button {
-			margin-top: 45px;
-		}
+}
+.comments-votes {
+	min-width: 60px;
+	margin-top: 30px;
+	font-size: 1.25rem;
+	text-align: center;
+
+	.votes-up {
+		color: orange;
 	}
+	.votes-down {
+		color: aqua;
+	}
+}
+.comments-parent-body {
+	border-left: 4px solid rgb(66, 66, 66);
+	padding-left: 30px;
+
+	&:hover {
+		border-left: 4px solid rgb(126, 126, 126);
+	}
+}
+.hide-comments-button {
+	font-size: 2rem;
+	color: rgba(145, 145, 145, 0.6);
 }

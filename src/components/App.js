@@ -19,6 +19,7 @@ const App = () => {
 	};
 	const handleSubmit = (e) => {
 		if (e.key === "Enter") {
+			e.preventDefault();
 			axios
 				.get(`https://www.reddit.com/r/${input}.json?limit=5`)
 				.then((response) => {
@@ -57,20 +58,21 @@ const App = () => {
 		<div className="App">
 			<header className="App-header">
 				<div className="search-bar">
-					<input
-						placeholder="Subreddit Here"
-						type="text"
-						value={input}
-						onChange={handleChange}
-						onKeyDown={handleSubmit}
-						autoComplete="none"
-					></input>
+					<form>
+						<label>
+							<i className="fas fa-search"></i>
+						</label>
+						<input
+							placeholder="Type Subreddit Here"
+							type="text"
+							value={input}
+							onChange={handleChange}
+							onKeyDown={handleSubmit}
+							autoComplete="none"
+						></input>
+					</form>
 				</div>
-				<div>
-					<ul>
-						<Posts posts={posts} />
-					</ul>
-				</div>
+				<Posts posts={posts} />
 			</header>
 		</div>
 	);
