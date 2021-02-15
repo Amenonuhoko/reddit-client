@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // CSS
-import "./ShowComments.scss";
+import "./Comments.scss";
 
-const ShowComments = (props) => {
+const Comments = (props) => {
 	// State
 	const [collapse, setCollapse] = useState(false);
 	// Handle
@@ -14,18 +14,18 @@ const ShowComments = (props) => {
 	};
 
 	return (
-		<div className="comments-box">
+		<div className="comments">
 			<div className="comments-show-button">
 				<button onClick={handleClick}>
-					<i class="far fa-comment-dots"></i>Comments
+					{props.data.num_comments} Comments <i class="far fa-comment-dots"></i>
 				</button>
 			</div>
 
-			{collapse && <Comments data={props.data} />}
+			{collapse && <CommentsBody data={props.data} />}
 		</div>
 	);
 };
-const Comments = (props) => {
+const CommentsBody = (props) => {
 	// State
 	const subreddit = props.data.subreddit;
 	const article = props.data.id;
@@ -42,13 +42,13 @@ const Comments = (props) => {
 	}, []);
 
 	return (
-		<div className="comments-main-container">
+		<div className="comments-container">
 			<ul>
 				{comments.map((el, i) => {
 					return (
 						<li key={i}>
-							<div className="comments">
-								<div className="comments-votes">
+							<div className="comments-parent">
+								<div className="votes">
 									<div className="votes-up">
 										<p>{el.data.ups}</p>
 									</div>
@@ -56,12 +56,12 @@ const Comments = (props) => {
 										<p>{el.data.downs}</p>
 									</div>
 								</div>
-								<div className="comments-body">
+								<div className="comments-parent-body">
 									<h5>{el.data.author}</h5>
 									<p>{el.data.body}</p>
 									<div className="comments-children">
 										{el.data.replies ? (
-											<CommentChildren data={el.data.replies.data} />
+											<CommentsChildren data={el.data.replies.data} />
 										) : null}
 									</div>
 								</div>
@@ -73,14 +73,14 @@ const Comments = (props) => {
 		</div>
 	);
 };
-const CommentChildren = (props) => {
+const CommentsChildren = (props) => {
 	const [collapse, setCollapse] = useState(false);
 	const handleClick = () => {
 		setCollapse((prev) => !prev);
 	};
 	if (collapse) {
 		return (
-			<div className="comments-container">
+			<div className="comments-child-container">
 				<div className="hide-comments-button">
 					<i className="fas fa-plus-square" onClick={handleClick}></i>
 				</div>
@@ -89,8 +89,8 @@ const CommentChildren = (props) => {
 					{props.data.children.map((el, i) => {
 						return (
 							<li>
-								<div className="comments">
-									<div className="comments-votes">
+								<div className="comments-parent">
+									<div className="votes">
 										<div className="votes-up">
 											<p>{el.data.ups}</p>
 										</div>
@@ -98,12 +98,12 @@ const CommentChildren = (props) => {
 											<p>{el.data.downs}</p>
 										</div>
 									</div>
-									<div className="comments-body">
+									<div className="comments-parent-body">
 										<h5>{el.data.author}</h5>
 										<p>{el.data.body}</p>
 										<div className="comments-children">
 											{el.data.replies ? (
-												<CommentChildren data={el.data.replies.data} />
+												<CommentsChildren data={el.data.replies.data} />
 											) : null}
 										</div>
 									</div>
@@ -121,4 +121,4 @@ const CommentChildren = (props) => {
 		</div>
 	);
 };
-export default ShowComments;
+export default Comments;

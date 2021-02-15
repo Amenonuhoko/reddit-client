@@ -1,0 +1,45 @@
+.comments {
+	display: flex;
+	flex-direction: column;
+	.comments-show-button {
+		display: flex;
+		justify-content: center;
+		button {
+			font-size: 1.5rem;
+			background-color: transparent;
+			padding: 0;
+			border: none;
+			border-radius: 5px;
+			color: grey;
+			padding: 5px;
+			outline: none;
+
+			&:hover {
+				background-color: rgba(52, 53, 54, 0.75);
+			}
+		}
+	}
+	.comments-container {
+		border: 2px solid grey;
+		border-radius: 10px;
+		overflow-y: scroll;
+		.comments-parent {
+			display: flex;
+			padding: 5px;
+			.comments-parent-body {
+				border-left: 2px solid gray;
+				padding-left: 20px;
+			}
+		}
+	}
+}
+
+.comments-child-container {
+	display: flex;
+	.hide-comments-button {
+		font-size: 2rem;
+		button {
+			margin-top: 45px;
+		}
+	}
+}
