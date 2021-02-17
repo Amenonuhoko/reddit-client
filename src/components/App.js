@@ -1,17 +1,33 @@
 // Default
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+// Actions
+import { getPost } from "../actions";
+// CSS
 import "./App.scss";
 // Components
-import Posts from "./Posts";
-// CSS
+import Display from "./Display";
 
 const App = () => {
 	// State
-	const [posts, setPosts] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const loadingStyle = { display: loading ? "block" : "none" };
 	const [input, setInput] = useState("");
-	const [after, setAfter] = useState("");
-	const [before, setBefore] = useState("");
+	const [after, setAfter] = useState(null);
+
+	const dispatch = useDispatch();
+	// Functions
+	const getInitPosts = () => {
+		setLoading(true);
+		axios
+			.get(`https://www.reddit.com/r/${input}.json?limit=5`)
+			.then((response) => {
+				setLoading(false);
+				setAfter(response.data.data.after);
+				dispatch(getPost({ posts: response.data.data }));
+			});
+	};
 
 	// Handle
 	const handleChange = (e) => {
@@ -20,40 +36,10 @@ const App = () => {
 	const handleSubmit = (e) => {
 		if (e.key === "Enter") {
 			e.preventDefault();
-			axios
-				.get(`https://www.reddit.com/r/${input}.json?limit=5`)
-				.then((response) => {
-					setAfter(response.data.data.after);
-					setPosts(response.data.data.children);
-				});
-		}
-	};
-	const handleKeyDown = (e) => {
-		if (e.key === "ArrowRight") {
-			axios
-				.get(`https://www.reddit.com/r/${input}.json?limit=5&after=${after}`)
-				.then((response) => {
-					setBefore(response.data.data.before);
-					setAfter(response.data.data.after);
-					setPosts(response.data.data.children);
-				});
-		} else if (e.key === "ArrowLeft") {
-			axios
-				.get(`https://www.reddit.com/r/${input}.json?limit=5&before=${before}`)
-				.then((response) => {
-					setBefore(response.data.data.before);
-					setAfter(response.data.data.after);
-					setPosts(response.data.data.children);
-				});
+			getInitPosts();
 		}
 	};
 
-	useEffect(() => {
-		window.addEventListener("keydown", handleKeyDown);
-		return () => {
-			window.removeEventListener("keydown", handleKeyDown);
-		};
-	});
 	return (
 		<div className="App">
 			<header className="App-header">
@@ -63,6 +49,9 @@ const App = () => {
 							<i className="fas fa-search"></i>
 						</label>
 						<input
+							data-min="10"
+							data-max="50"
+							max-size="20"
 							placeholder="Type Subreddit Here"
 							type="text"
 							value={input}
@@ -72,7 +61,10 @@ const App = () => {
 						></input>
 					</form>
 				</div>
-				<Posts posts={posts} />
+				<div className="loading" style={loadingStyle}>
+					<h1 style={{ textAlign: "center" }}>Loading</h1>
+				</div>
+				<Display after={after} setAfter={setAfter} subreddit={input} />
 			</header>
 		</div>
 	);

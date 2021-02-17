@@ -26,7 +26,7 @@ const Comments = (props) => {
 			{collapse && (
 				<div className="comments-hide-button">
 					<button onClick={handleClick}>
-						<i class="far fa-times-circle"></i>
+						<i className="far fa-times-circle"></i>
 					</button>
 				</div>
 			)}
