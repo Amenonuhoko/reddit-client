@@ -39,6 +39,7 @@ const App = () => {
 			getInitPosts();
 		}
 	};
+	// useEffect(() => {}, [after]);
 
 	return (
 		<div className="App">
@@ -49,8 +50,6 @@ const App = () => {
 							<i className="fas fa-search"></i>
 						</label>
 						<input
-							data-min="10"
-							data-max="50"
 							max-size="20"
 							placeholder="Type Subreddit Here"
 							type="text"

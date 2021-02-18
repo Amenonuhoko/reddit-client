@@ -23,6 +23,7 @@ const Display = (props) => {
 				`https://www.reddit.com/r/${props.subreddit}.json?limit=5&after=${after}`
 			)
 			.then((response) => {
+				console.log(after);
 				setAfter(response.data.data.after);
 				dispatch(addPost({ posts: response.data.data }));
 			});
@@ -36,19 +37,19 @@ const Display = (props) => {
 
 	// Render
 	useEffect(() => {
-		const options = {
-			root: null,
-			rootMargin: "0px",
-			threshold: 0.1,
-		};
-
-		let observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					getNewPosts();
-				}
-			});
-		}, options);
+		let observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						console.log(entry.isIntersecting);
+						console.log(entry.intersectionRatio);
+						getNewPosts();
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.3 }
+		);
 
 		if (observedRef.current) {
 			observer.observe(observedRef.current);
@@ -67,7 +68,7 @@ const Display = (props) => {
 				return el.posts.children.map((el, i) => {
 					return (
 						<div ref={observedRef} key={i}>
-							<Posts posts={el} />;
+							<Posts posts={el} />
 						</div>
 					);
 				});

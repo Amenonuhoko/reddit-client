@@ -13,6 +13,10 @@ ul {
 body {
 	background-color: #000000;
 	color: white;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 .App-header {
 	margin: 10px 10px;
