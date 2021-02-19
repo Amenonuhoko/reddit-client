@@ -58,10 +58,13 @@ const CommentsBody = (props) => {
 							<div className="comments-parent">
 								<div className="comments-votes">
 									<div className="votes-up">
+										<div className="up">
+											<i className="fas fa-caret-up"></i>
+										</div>
 										<p>{el.data.ups}</p>
-									</div>
-									<div className="votes-down">
-										<p>{el.data.downs}</p>
+										<div className="down">
+											<i className="fas fa-caret-down"></i>
+										</div>
 									</div>
 								</div>
 								<div className="comments-parent-body">
@@ -69,7 +72,9 @@ const CommentsBody = (props) => {
 									<p>{el.data.body}</p>
 									<div className="comments-children">
 										{el.data.replies ? (
-											<CommentsChildren data={el.data.replies.data} />
+											<>
+												<CommentsChildren data={el.data.replies.data} />
+											</>
 										) : null}
 									</div>
 								</div>
@@ -96,14 +101,17 @@ const CommentsChildren = (props) => {
 				<ul>
 					{props.data.children.map((el, i) => {
 						return (
-							<li>
+							<li key={i}>
 								<div className="comments-parent">
 									<div className="comments-votes">
 										<div className="votes-up">
+											<div className="up">
+												<i className="fas fa-caret-up"></i>
+											</div>
 											<p>{el.data.ups}</p>
-										</div>
-										<div className="votes-down">
-											<p>{el.data.downs}</p>
+											<div className="down">
+												<i className="fas fa-caret-down"></i>
+											</div>
 										</div>
 									</div>
 									<div className="comments-parent-body">

@@ -13,13 +13,12 @@ const Content = (props) => {
 	return (
 		<snap-tabs>
 			<section className="scroll-snap-x">
-				{posts.data.thumbnail && (
-					<article id="media">
-						<div className={zoomed ? "zoomed" : ""} onClick={handleClick}>
-							<Media data={posts.data} />
-						</div>
-					</article>
-				)}
+				<article id="media">
+					<div className={zoomed ? "zoomed" : ""} onClick={handleClick}>
+						<Media data={posts.data} />
+					</div>
+				</article>
+
 				<article id="comment">
 					<Comments data={posts.data} />
 				</article>
