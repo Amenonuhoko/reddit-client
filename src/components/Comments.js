@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // CSS
-import "./Comments.scss";
 
 const Comments = (props) => {
 	// State
@@ -47,6 +46,7 @@ const CommentsBody = (props) => {
 			.then((response) => {
 				setComments(response.data[1].data.children);
 			});
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

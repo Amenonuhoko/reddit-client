@@ -1,6 +1,6 @@
 // Default
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 // Actions
 import { getPost } from "../actions";
@@ -50,7 +50,6 @@ const App = () => {
 							<i className="fas fa-search"></i>
 						</label>
 						<input
-							max-size="20"
 							placeholder="Type Subreddit Here"
 							type="text"
 							value={input}
